@@ -1,36 +1,17 @@
 import React, { useState } from "react";
-import Todo from "./Todo";
+
+// Make sure to import Todo component!
+
 import './App.css';
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  const [inputVal, setInputVal] = useState("");
-  console.log(inputVal);
+  // Define states for todos
+  
+  // Define states for input value (input box)
 
-  function addToList() {
-    if (inputVal != "") {
-      const updatedTodo = [...todos, inputVal];
-      setTodos(updatedTodo);
-      setInputVal("");
-      console.log(todos);
-    }
-  }
+  // Write the function to add todo items
 
-  return (
-    <div className="App">
-      <div className="input" >
-      <input placeholder="What's on your mind?" value={inputVal} onChange={(e) => setInputVal(e.target.value)} />
-      <button onClick={addToList}>
-        + Add
-      </button>
-      </div>
-      
-      <div>
-        {todos.length == 0 ? <p>No todo items.</p>
-          : <ul>{todos.map(todo => <Todo text={todo} />)}</ul>}
-      </div>
-    </div>
-  )
+  // Return a textbox with add button. After typing a todo and entering "Add", we want to make sure to display that below as a list
 }
 
 export default App;
