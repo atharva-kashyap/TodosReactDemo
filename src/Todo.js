@@ -1,17 +1,9 @@
 import React, { useState } from "react";
 
 function Todo(props) {
-    const [strikeThroughs, setStrikeThrough] = useState(false);
+    // Define state of the Strike through
 
-
-    return (
-        <div>
-            {strikeThroughs ?
-                <li style={{textDecoration: 'line-through'}}><input type="checkbox" checked={strikeThroughs}/> {props.text}</li>
-                : <li><input type="checkbox" onChange={() => setStrikeThrough(true)}/> {props.text} </li>}
-        </div>
-
-    )
+    // Return the current todo item based on props
 }
 
 export default Todo;
