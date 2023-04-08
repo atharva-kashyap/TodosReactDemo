@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
+import Todo from "./Todo";
 import './App.css';
 
 function App() {
+  const [todos, setTodos] = useState([]);
+  const [inputVal, setInputVal] = useState("");
+  console.log(inputVal);
+
+  function addToList() {
+    if (inputVal != "") {
+      const updatedTodo = [...todos, inputVal];
+      setTodos(updatedTodo);
+      setInputVal("");
+      console.log(todos);
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="input" >
+      <input placeholder="What's on your mind?" value={inputVal} onChange={(e) => setInputVal(e.target.value)} />
+      <button onClick={addToList}>
+        + Add
+      </button>
+      </div>
+      
+      <div>
+        {todos.length == 0 ? <p>No todo items.</p>
+          : <ul>{todos.map(todo => <Todo text={todo} />)}</ul>}
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
